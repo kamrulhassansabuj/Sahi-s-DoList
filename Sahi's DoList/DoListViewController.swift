@@ -9,7 +9,7 @@
 import UIKit
 
 class DoListViewController: UITableViewController {
-    let itemArray = ["Call Mom", "Complete the Next Video", "Find a better Life"]
+    var itemArray = ["Call Mom", "Complete the Next Video", "Find a better Life"]
     
     
     override func viewDidLoad() {
@@ -44,6 +44,27 @@ class DoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
        
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
+    }
+    
+    //MARK: - Add New Item
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add New Do List Item", message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Add New Item"
+            textField = alertTextField
+            print(textField.text)
+        }
+        let action = UIAlertAction(title: "Add Item", style: .default) { (UIAlertAction) in
+            self.itemArray.append(textField.text!)
+            self.tableView.reloadData()
+            print(self.itemArray)
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+        
     }
 }
 
