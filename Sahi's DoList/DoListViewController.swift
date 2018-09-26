@@ -59,7 +59,6 @@ class DoListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) { (UIAlertAction) in
             self.itemArray.append(textField.text!)
             self.tableView.reloadData()
-            print(self.itemArray)
         }
         
         alert.addAction(action)

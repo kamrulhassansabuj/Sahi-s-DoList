@@ -33,7 +33,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sahi's DoList" id="3bx-XA-fm6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Yb-T9-0Vj">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="7Yb-T9-0Vj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="xaL-4W-FyA" id="vPn-sH-vbM"/>
