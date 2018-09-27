@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9805F5E8215CE1BC00021750 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9805F5E7215CE1BC00021750 /* Item.swift */; };
 		98217541215A05D600352E57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98217540215A05D600352E57 /* AppDelegate.swift */; };
 		98217543215A05D600352E57 /* DoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98217542215A05D600352E57 /* DoListViewController.swift */; };
 		98217546215A05D600352E57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98217544215A05D600352E57 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9805F5E7215CE1BC00021750 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		9821753D215A05D600352E57 /* Sahi's DoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sahi's DoList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98217540215A05D600352E57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98217542215A05D600352E57 /* DoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoListViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9805F5E9215CE1C800021750 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				9805F5E7215CE1BC00021750 /* Item.swift */,
+				9805F5EA215CE1D100021750 /* View */,
+				9805F5EB215CE1D700021750 /* Controller */,
+				9805F5EC215CE2AD00021750 /* Supporting Files */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		9805F5EA215CE1D100021750 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98217544215A05D600352E57 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9805F5EB215CE1D700021750 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				98217540215A05D600352E57 /* AppDelegate.swift */,
+				98217542215A05D600352E57 /* DoListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9805F5EC215CE2AD00021750 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98217547215A05D800352E57 /* Assets.xcassets */,
+				98217549215A05D800352E57 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		98217534215A05D600352E57 = {
 			isa = PBXGroup;
 			children = (
@@ -54,11 +93,7 @@
 		9821753F215A05D600352E57 /* Sahi's DoList */ = {
 			isa = PBXGroup;
 			children = (
-				98217540215A05D600352E57 /* AppDelegate.swift */,
-				98217542215A05D600352E57 /* DoListViewController.swift */,
-				98217544215A05D600352E57 /* Main.storyboard */,
-				98217547215A05D800352E57 /* Assets.xcassets */,
-				98217549215A05D800352E57 /* LaunchScreen.storyboard */,
+				9805F5E9215CE1C800021750 /* Data Model */,
 				9821754C215A05D800352E57 /* Info.plist */,
 			);
 			path = "Sahi's DoList";
@@ -137,6 +172,7 @@
 			files = (
 				98217543215A05D600352E57 /* DoListViewController.swift in Sources */,
 				98217541215A05D600352E57 /* AppDelegate.swift in Sources */,
+				9805F5E8215CE1BC00021750 /* Item.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
