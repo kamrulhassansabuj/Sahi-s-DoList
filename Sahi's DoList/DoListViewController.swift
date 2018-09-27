@@ -9,12 +9,18 @@
 import UIKit
 
 class DoListViewController: UITableViewController {
+    
     var itemArray = ["Call Mom", "Complete the Next Video", "Find a better Life"]
+    
+    let defaults = UserDefaults.standard
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if let items = defaults.array(forKey: "DoListArray") as? [String]{
+            itemArray = items
+        }
     }
     
     //MARK: - TableView Datasource Method
@@ -58,6 +64,8 @@ class DoListViewController: UITableViewController {
         }
         let action = UIAlertAction(title: "Add Item", style: .default) { (UIAlertAction) in
             self.itemArray.append(textField.text!)
+            
+            self.defaults.set(self.itemArray, forKey: "DoListArray")
             self.tableView.reloadData()
         }
         
