@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 class DoListViewController: UITableViewController{
     
-    
+   
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var itemArray = [Item]()
-    
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Item.plist")
-    
+    var selectedCategory : Category? {
+        didSet{
+            loadItems()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dataFilePath)
         
-        loadItems()
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        
         
     }
     
@@ -31,7 +36,7 @@ class DoListViewController: UITableViewController{
         
         let currentItem = itemArray[indexPath.row]
         
-        cell.textLabel?.text = currentItem.itemTitel
+        cell.textLabel?.text = currentItem.itemTitle
         
         //Ternary Operation
         //value = condition ? valueTrue : valueFalse
@@ -47,22 +52,34 @@ class DoListViewController: UITableViewController{
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemArray.count
     }
+    
+    
     //MARK: - TableView Delegate Method
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //itemArray[indexPath.row].setValue("Updated value", forKey: "itemTitle") // update from context
+        
         itemArray[indexPath.row].checkDone = !itemArray[indexPath.row].checkDone
+        //        context.delete(itemArray[indexPath.row]) // Remove from context
+        //        itemArray.remove(at: indexPath.row) // Remove from itemArray
+        //
         saveItem()
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
+    
+    
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
+    
+    
     
     //MARK: - Add New Item
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -72,10 +89,12 @@ class DoListViewController: UITableViewController{
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (UIAlertAction) in
             
-            let newItem = Item()
             
-            newItem.itemTitel = textField.text!
             
+            let newItem = Item(context: self.context)
+            newItem.parentCategory = self.selectedCategory
+            newItem.itemTitle = textField.text!
+            newItem.checkDone = false
             self.itemArray.append(newItem)
             
             self.saveItem()
@@ -92,27 +111,69 @@ class DoListViewController: UITableViewController{
         
     }
     
+    
     func saveItem(){
-        let encoder = PropertyListEncoder()
         
         do {
-            let data = try encoder.encode(itemArray)
-            try data.write(to: dataFilePath!)
+            try context.save()
         }
         catch{
-            print("Error Encoding Item Array, \(error)")
+            print("Error Saving Context \(error)")
         }
         self.tableView.reloadData()
     }
-    func loadItems(){
-        if let data = try? Data(contentsOf: dataFilePath!){
-            let decoder = PropertyListDecoder()
+    
+    
+    func loadItems(with request : NSFetchRequest<Item> = Item.fetchRequest(), predicate : NSPredicate? = nil){
+        
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+        
+        if let additionalPredicate = predicate{
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
+        }else{
+            request.predicate = categoryPredicate
+        }
+//
+//        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [Categorypredicate,predicate])
+//
+//        request.predicate = compoundPredicate
+        
+        do{
             
-            do {
-                itemArray = try decoder.decode([Item].self, from: data)
-            } catch{
-                print("errror decoding error \(error)")
+            itemArray =  try context.fetch(request)
+        }
+        catch{
+            print("Error Fethching data from contex \(error)")
+        }
+        tableView.reloadData()
+        
+    }
+}
+
+
+//MARK: - Search Bar Method
+extension DoListViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        
+        let predicate = NSPredicate(format: "itemTitle CONTAINS[cd] %@", searchBar.text!)
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "itemTitle", ascending: true)]
+        
+        loadItems(with: request, predicate: predicate)
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0{
+            loadItems()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
             }
+            
+            
         }
     }
 }

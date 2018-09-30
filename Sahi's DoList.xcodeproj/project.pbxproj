@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9805F5E8215CE1BC00021750 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9805F5E7215CE1BC00021750 /* Item.swift */; };
+		9805F610215D72BC00021750 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9805F60E215D72BC00021750 /* DataModel.xcdatamodeld */; };
 		98217541215A05D600352E57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98217540215A05D600352E57 /* AppDelegate.swift */; };
 		98217543215A05D600352E57 /* DoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98217542215A05D600352E57 /* DoListViewController.swift */; };
 		98217546215A05D600352E57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98217544215A05D600352E57 /* Main.storyboard */; };
 		98217548215A05D800352E57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98217547215A05D800352E57 /* Assets.xcassets */; };
 		9821754B215A05D800352E57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98217549215A05D800352E57 /* LaunchScreen.storyboard */; };
+		98D814CB215FF9FA00C43E84 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D814CA215FF9FA00C43E84 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9805F5E7215CE1BC00021750 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		9805F60F215D72BC00021750 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		9821753D215A05D600352E57 /* Sahi's DoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sahi's DoList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98217540215A05D600352E57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98217542215A05D600352E57 /* DoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoListViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +25,7 @@
 		98217547215A05D800352E57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9821754A215A05D800352E57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9821754C215A05D800352E57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98D814CA215FF9FA00C43E84 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,10 +42,7 @@
 		9805F5E9215CE1C800021750 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				9805F5E7215CE1BC00021750 /* Item.swift */,
-				9805F5EA215CE1D100021750 /* View */,
-				9805F5EB215CE1D700021750 /* Controller */,
-				9805F5EC215CE2AD00021750 /* Supporting Files */,
+				9805F60E215D72BC00021750 /* DataModel.xcdatamodeld */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -59,7 +58,7 @@
 		9805F5EB215CE1D700021750 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				98217540215A05D600352E57 /* AppDelegate.swift */,
+				98D814CA215FF9FA00C43E84 /* CategoryViewController.swift */,
 				98217542215A05D600352E57 /* DoListViewController.swift */,
 			);
 			path = Controller;
@@ -93,8 +92,12 @@
 		9821753F215A05D600352E57 /* Sahi's DoList */ = {
 			isa = PBXGroup;
 			children = (
+				98217540215A05D600352E57 /* AppDelegate.swift */,
 				9805F5E9215CE1C800021750 /* Data Model */,
+				9805F5EA215CE1D100021750 /* View */,
+				9805F5EB215CE1D700021750 /* Controller */,
 				9821754C215A05D800352E57 /* Info.plist */,
+				9805F5EC215CE2AD00021750 /* Supporting Files */,
 			);
 			path = "Sahi's DoList";
 			sourceTree = "<group>";
@@ -170,9 +173,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98D814CB215FF9FA00C43E84 /* CategoryViewController.swift in Sources */,
 				98217543215A05D600352E57 /* DoListViewController.swift in Sources */,
+				9805F610215D72BC00021750 /* DataModel.xcdatamodeld in Sources */,
 				98217541215A05D600352E57 /* AppDelegate.swift in Sources */,
-				9805F5E8215CE1BC00021750 /* Item.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +376,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9805F60E215D72BC00021750 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9805F60F215D72BC00021750 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 9805F60F215D72BC00021750 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 98217535215A05D600352E57 /* Project object */;
 }

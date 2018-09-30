@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sahi's DoList-->
+        <!--Items-->
         <scene sceneID="d2R-Cz-rRe">
             <objects>
                 <tableViewController id="xaL-4W-FyA" customClass="DoListViewController" customModule="Sahi_s_DoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,9 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="4rX-e1-zgg">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="xaL-4W-FyA" id="ISK-ju-a7V"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoListItemCell" id="RiR-bz-KL2">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RiR-bz-KL2" id="MBp-Bg-dvd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -32,7 +40,7 @@
                             <outlet property="delegate" destination="xaL-4W-FyA" id="8Qg-oy-2rr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sahi's DoList" id="3bx-XA-fm6">
+                    <navigationItem key="navigationItem" title="Items" id="3bx-XA-fm6">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="7Yb-T9-0Vj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -43,7 +51,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNK-30-XDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2452" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Iqy-vs-D3b">
@@ -60,12 +68,51 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xaL-4W-FyA" kind="relationship" relationship="rootViewController" id="ngT-JM-9Te"/>
+                        <segue destination="w5B-Wa-6gX" kind="relationship" relationship="rootViewController" id="Aeg-F6-LWu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eA3-NY-LWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936.79999999999995" y="133.5832083958021"/>
+            <point key="canvasLocation" x="814" y="134"/>
+        </scene>
+        <!--Category-->
+        <scene sceneID="maY-3f-qPi">
+            <objects>
+                <tableViewController id="w5B-Wa-6gX" customClass="CategoryViewController" customModule="Sahi_s_DoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dsM-YQ-dCs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CatagoryCell" id="cru-Jn-ZOt" userLabel="CatagoryCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cru-Jn-ZOt" id="Voh-Er-Uej">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w5B-Wa-6gX" id="PHw-wu-jT9"/>
+                            <outlet property="delegate" destination="w5B-Wa-6gX" id="l4j-E9-hTG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Category" id="c6Y-nz-4Fv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RRn-hH-174">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="w5B-Wa-6gX" id="eNZ-hN-Eoa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="xaL-4W-FyA" kind="show" identifier="goToItems" id="ZfV-nM-OE0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zGE-oc-VgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1596" y="134"/>
         </scene>
     </scenes>
 </document>
